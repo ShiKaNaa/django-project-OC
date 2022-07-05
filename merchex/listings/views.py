@@ -8,14 +8,7 @@ from listings.models import Title
 def hello(request):
     bands = Band.objects.all()
     titles = Title.objects.all()
-    return HttpResponse(f"""
-    <h1>Hello Django!</h1>
-    <p>Mes groupes préférés sont: </p>
-    <ul>
-        <li>{bands[0].name} {titles[0].title}</li>
-        <li>{bands[1].name} {titles[1].title}</li>
-    </ul>
-""")
+    return render(request, "listings/hello.html", {"first_band": bands[0]})
 
 def about(request):
     return HttpResponse('<h1>À propos</h1> <p>Nous adorons merch !</p>')
